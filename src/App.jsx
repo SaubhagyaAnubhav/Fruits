@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './components/navbar/navbar'
+import Navbar from './components/Navbar/Navbar'
 import Fresh from './components/Fresh/Fresh'
 import Menu from './components/Navbar/Menu'
 import Menu1 from './components/Menu1/Menu1'
