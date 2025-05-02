@@ -15,8 +15,20 @@ export default defineConfig({
     tailwindcss(),
   ],
   build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: true,
     rollupOptions: {
-      external: ['framer-motion']
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'framer-motion': ['framer-motion']
+        }
+      }
     }
+  },
+  server: {
+    port: 3000,
+    host: true
   }
 })
