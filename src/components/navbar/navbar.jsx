@@ -1,7 +1,7 @@
 import React from 'react'
 import {FaLeaf} from "react-icons/fa"
 import {MdMenu, MdOutlineShoppingCart} from "react-icons/md"
-import Menu from "./Menu"
+import Menu from "./menu"
 import { useState} from 'react'
 import { motion} from "framer-motion";
 
