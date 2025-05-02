@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { motion } from "framer-motion";
+import { useAnimation } from "framer-motion";
 import { IoBagHandleOutline } from "react-icons/io5";
 import FreshImg from "../../assets/bowl.png";
-import { FadeRight } from "../../utility/animation";
 
 const Fresh = ({ 
   title = "Nutritious Fresh Fruits",
@@ -16,6 +15,15 @@ const Fresh = ({
 }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const controls = useAnimation();
+
+  React.useEffect(() => {
+    controls.start({
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6 }
+    });
+  }, [controls]);
 
   const handleImageLoad = () => {
     console.log('Image loaded successfully');
@@ -27,47 +35,53 @@ const Fresh = ({
     setImageError(true);
   };
 
-  console.log('Image source:', imageSrc);
-
   return (
     <section aria-label="Fresh fruits section" role="region">
       <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[650px] w-full">
         {/* Brand Info */}
         <div className='flex flex-col justify-center items-center py-14 md:py-0 relative z-10'>
           <div className='text-center md:text-left space-y-6 lg:max-w-[400px]'>
-            <motion.h1 
-              variants={FadeRight(0.6)} 
-              initial="hidden" 
-              animate="visible" 
+            <h1 
+              style={{
+                opacity: 0,
+                transform: 'translateX(-20px)',
+                animation: 'fadeIn 0.6s forwards'
+              }}
               className='text-5xl lg:text-6xl font-bold leading-[1.2] xl:leading-[1.2] font-averia'
             >
               Nutritious
               <br className='leading-none' />
               <span className='text-yellow-600'>Fresh Fruits</span>
-            </motion.h1>
+            </h1>
             
-            <motion.p 
-              variants={FadeRight(0.9)} 
-              initial="hidden" 
-              animate="visible" 
+            <p 
+              style={{
+                opacity: 0,
+                transform: 'translateX(-20px)',
+                animation: 'fadeIn 0.6s 0.2s forwards'
+              }}
               className='text-2xl tracking-wide'
             >
               {subtitle}
-            </motion.p>
+            </p>
             
-            <motion.p 
-              variants={FadeRight(1.2)} 
-              initial="hidden" 
-              animate="visible" 
+            <p 
+              style={{
+                opacity: 0,
+                transform: 'translateX(-20px)',
+                animation: 'fadeIn 0.6s 0.3s forwards'
+              }}
               className='text-gray-700'
             >
               {description}
-            </motion.p>
+            </p>
             
-            <motion.div 
-              variants={FadeRight(1.5)} 
-              initial="hidden" 
-              animate="visible" 
+            <div 
+              style={{
+                opacity: 0,
+                transform: 'translateX(-20px)',
+                animation: 'fadeIn 0.6s 0.5s forwards'
+              }}
               className='flex justify-center md:justify-start'
             >
               <button 
@@ -80,7 +94,7 @@ const Fresh = ({
                 </span>
                 {buttonText}
               </button>
-            </motion.div>
+            </div>
           </div>
         </div>
 
@@ -95,12 +109,14 @@ const Fresh = ({
                 <p className="text-gray-500">Image not available</p>
               </div>
             ) : (
-              <motion.img 
-                initial={{ opacity: 0, x: 200, rotate: 75 }}
-                animate={{ opacity: imageLoaded ? 1 : 0, x: 0, rotate: 0 }}
-                transition={{ duration: 1, delay: 0.2 }}
+              <img 
                 src={imageSrc}
                 alt={imageAlt}
+                style={{
+                  opacity: 0,
+                  transform: 'translateX(20px) rotate(75deg)',
+                  animation: 'fadeIn 1s 0.2s forwards, rotateIn 1s 0.2s forwards'
+                }}
                 className={`w-[350px] md:w-[550px] drop-shadow ${!imageLoaded ? 'hidden' : ''}`}
                 onLoad={handleImageLoad}
                 onError={handleImageError}
@@ -110,6 +126,20 @@ const Fresh = ({
           </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        @keyframes rotateIn {
+          to {
+            transform: translateX(0) rotate(0);
+          }
+        }
+      `}</style>
     </section>
   );
 };
