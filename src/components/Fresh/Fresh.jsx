@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { motion} from "framer-motion";
+import { motion } from "framer-motion";
 import { IoBagHandleOutline } from "react-icons/io5";
 import FreshImg from "../../assets/bowl.png";
 import { FadeRight } from "../../utility/animation";
