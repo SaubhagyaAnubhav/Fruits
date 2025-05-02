@@ -1,9 +1,9 @@
 import React from 'react'
 import {FaLeaf} from "react-icons/fa"
 import {MdMenu, MdOutlineShoppingCart} from "react-icons/md"
-import Menu from "./Menu.jsx"
+import Menu from "./Menu"
 import { useState} from 'react'
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const NavbarMenu = [
     {
@@ -33,7 +33,7 @@ const NavbarMenu = [
     },
 ]
 
-const navbar = () => {
+const Navbar = () => {
     const[open, setOpen] = useState(false)
     return <>
     <nav className="px-4 py-2 shadow">
@@ -66,8 +66,8 @@ const navbar = () => {
     </motion.div>
   </nav>
   {/* Mobile Menu section */}
-   <Menu open = {open}/>
+   <Menu open={open}/>
    </>
 }
 
-export default navbar
+export default Navbar
