@@ -3,7 +3,7 @@ import {FaLeaf} from "react-icons/fa"
 import {MdMenu, MdOutlineShoppingCart} from "react-icons/md"
 import Menu from "./Menu"
 import { useState } from 'react'
-import { motion } from "framer-motion/dist/framer-motion"
+import { motion } from "framer-motion";
 
 const NavbarMenu = [
     {
