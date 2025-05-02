@@ -1,7 +1,7 @@
 import React from 'react'
 import {FaLeaf} from "react-icons/fa"
 import {MdMenu, MdOutlineShoppingCart} from "react-icons/md"
-import Menu from "../Navbar/Menu"
+import Menu from "./Menu"
 import { useState} from 'react'
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -33,7 +33,7 @@ const NavbarMenu = [
     },
 ]
 
-const Navbar = () => {
+const navbar = () => {
     const[open, setOpen] = useState(false)
     return <>
     <nav className="px-4 py-2 shadow">
@@ -70,4 +70,4 @@ const Navbar = () => {
    </>
 }
 
-export default Navbar
+export default navbar
